@@ -1,0 +1,3 @@
+.header-lower-border{
+    border-bottom: 5px var(--secondary) solid;
+}

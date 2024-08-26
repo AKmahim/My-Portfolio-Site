@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+    --primary: #1c1e2b;
+    --secondary: #651ef4;
+    --grey: #6d848b;
+  }
+
+
+body{
+    background-color: var(--primary);
+    font-family: "Anek Latin", sans-serif;
+}
+
+.anek-latin-font{
+    font-family: "Anek Latin",sans-serif;
+}
