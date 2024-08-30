@@ -10,7 +10,7 @@ const Header = () => {
                     <h2 className='text-white text-4xl anek-latin-font font-medium'>Coding is Fun</h2>
                 </a>
                 {/* project link */}
-                <div className="mt-4 flex justify-between items-center">
+                <div className="mt-4 hidden md:flex justify-between items-center">
                     {/* project links */}
                     <a href="/projects" className="flex justify-between items-center text-2xl text-white px-2 hover:text-grey">
                         About <span className="ms-2"> <LuExternalLink /></span>
