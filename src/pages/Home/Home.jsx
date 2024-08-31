@@ -16,8 +16,8 @@ const Home = () => {
         console.log(response);
         
         const data = JSON.parse(response.data.contents);
-        setQuote(data[0].q);
-        setAuthor(data[0].a);
+        setQuote(data[0]?.q);
+        setAuthor(data[0]?.a);
         } catch (error) {
         console.error('Error fetching the quote', error);
         }
