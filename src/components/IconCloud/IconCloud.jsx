@@ -99,6 +99,7 @@ const slugs = [
     'codeforeces',
     'bugcrowd',
     'vercel',
+    'ngix',
     'visualstudiocode'
   ];
 
