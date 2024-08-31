@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaRegLightbulb } from "react-icons/fa";
 import { FaQuoteLeft } from "react-icons/fa";
+import IconCloud from "../../components/IconCloud/IconCloud";
 
 const Home = () => {
     const [quote,setQuote] = useState('');
@@ -39,7 +40,7 @@ const Home = () => {
     return (
         <div className="anek-latin-font">
             {/* about info */}
-            <div className="mx-40 my-20 md:flex justify-between gap-10">
+            <div className="lg:mx-40 md:mx-10 my-20 md:flex  justify-between gap-10">
                 <div>
                     <h1 className="text-white text-6xl text-right">👋 Hey! My name is <span className="text-yellow-500"> Mahim.</span></h1>
                     <p className="text-white text-3xl text-right"><span className="border-b-2 border-secondary">Full Stack</span>  Web Developer</p>
@@ -59,7 +60,7 @@ const Home = () => {
 
             {/* key link and icon globe */}
             <div>
-
+                <IconCloud></IconCloud>
             </div>
         </div>
     );
