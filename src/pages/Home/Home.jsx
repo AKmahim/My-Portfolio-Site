@@ -16,8 +16,8 @@ import { IoLogoStackoverflow } from "react-icons/io5";
 import './Home.css';
 
 const Home = () => {
-    const [quote,setQuote] = useState('');
-    const [author,setAuthor] = useState('');
+    const [quote,setQuote] = useState('Do the best that you can do, Be the best that you will be.');
+    const [author,setAuthor] = useState('Mahim');
 
     
     // Define fetchQuote function 
