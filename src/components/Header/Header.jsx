@@ -12,7 +12,7 @@ const Header = () => {
                 {/* project link */}
                 <div className="mt-4 hidden md:flex justify-between items-center">
                     {/* project links */}
-                    <a href="/projects" className="flex justify-between items-center text-2xl text-white px-2 hover:text-grey">
+                    <a href="/about" className="flex justify-between items-center text-2xl text-white px-2 hover:text-grey">
                         About <span className="ms-2"> <LuExternalLink /></span>
                     </a>
                     <a href="/projects" className="flex justify-between items-center text-2xl text-white px-2 hover:text-grey">

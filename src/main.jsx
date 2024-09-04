@@ -9,6 +9,8 @@ import Home from './pages/Home/Home';
 import ErrorPage from './pages/Error/ErrorPage';
 import App from './App'
 import { HelmetProvider } from 'react-helmet-async';
+import Project from './pages/Project/Project';
+import About from './pages/About/About';
 
 
 
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
         path:"/",
         element: <Home></Home>,
       },
+      {
+        path:'/projects',
+        element:<Project></Project>
+      },
+      {
+        path: '/about',
+        element:<About></About>
+      }
      
       // {
       //   path: "/job-details/:id",
