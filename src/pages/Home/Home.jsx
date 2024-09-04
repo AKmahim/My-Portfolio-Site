@@ -50,17 +50,13 @@ const Home = () => {
     return (
         <div className="anek-latin-font mb-10">
             {/* about info */}
-            <div className="lg:mx-40 md:mx-10 mt-20 mb-10 md:flex  justify-between gap-10">
-                <div>
-                    <h1 className="text-white text-6xl text-right">👋 Hey! My name is <span className="text-yellow-500"> 
-                    <div class="tooltip">Mahim.
-                        <span class="tooltiptext">Mirajul Islam Mahim</span>
-                    </div>
-                        </span></h1>
-                    <p className="text-white text-3xl text-right"><span className="border-b-2 border-secondary">Full Stack</span>  Web Developer</p>
+            <div className="lg:mx-40 md:mx-10 md:mt-20 md:mb-10 md:flex md:flex-row  md:justify-between md:gap-10 flex flex-col justify-center items-center">
+                <div className="mb-10">
+                    <h1 className="text-white lg:text-5xl md:text-4xl md:text-right text-center text-3xl">👋 Hey! My name is <span className="text-yellow-500"> Mahim.</span></h1>
+                    <p className="text-white lg:text-3xl md:text-xl md:text-right text-center text-xl"><span className="border-b-2 border-secondary">Full Stack</span>  Web Developer</p>
                 </div>
                 {/* quote box */}
-                <div className="text-white relative w-[400px]">
+                <div className="text-white relative md:w-[400px] w-[300px] mx-10">
                     <div className="bg-grey p-5 border-l-4 border-yellow-500 rounded-r-lg">
                          <p className="text-2xl text-wrap"> {quote} </p>
                          <p className="text-xl text-yellow-500"> - {author}</p>
@@ -73,18 +69,19 @@ const Home = () => {
             </div>
 
             {/* key link and icon globe */}
-            <div className="lg:mx-40 md:mx-10  md:flex  justify-between gap-10">
+            <div className="lg:mx-40 md:mx-10  md:flex md:flex-row  md:justify-between md:gap-10 mx-10 flex flex-col justify-center items-center">
                 {/* icon cloud */}
                 <div>
                     <IconCloud></IconCloud>
                 </div>
-                <div className="text-white flex flex-col items-start  w-1/3">
-                    <div className="font-500 text-3xl items-start mb-4">Key Links</div>
+                <div className="text-white lg:w-1/2 md:flex flex-col   md:w-1/2  w-full">
+                    <div className="md:font-500 md:text-3xl md:items-start md:border-b-3 py-2 text-2xl mb-4 border-b-4 border-yellow-500">Key Links</div>
                     <div className="flex gap-3 flex-wrap ">
                         <ButtonPrimary
                             title="github"
                             link="https://github.com/AKmahim"
                             icon={ <VscGithub />}
+                            
                         ></ButtonPrimary>
                         <ButtonPrimary
                             title="facebook"

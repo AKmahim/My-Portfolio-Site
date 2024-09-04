@@ -7,7 +7,7 @@ const Header = () => {
             <div className='flex justify-between mx-10 items-center '>
                 <a href="/" className='mt-4 flex justify-between items-center'>
                     <img className="w-20 h-20" src={logo} />
-                    <h2 className='text-white text-4xl anek-latin-font font-medium'>Coding is Fun</h2>
+                    <h2 className='text-white md:text-4xl anek-latin-font font-medium text-3xl'>Coding is Fun</h2>
                 </a>
                 {/* project link */}
                 <div className="mt-4 hidden md:flex justify-between items-center">
