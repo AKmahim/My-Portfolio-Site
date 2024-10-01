@@ -21,10 +21,11 @@ export const projectCategory = [
     "IOT",
     "Robotics",
     "Nodejs",
+    "Expressjs",
     "NPM",
     "Vite",
     "AR",
     "VR",
     "360 degree Tour",
-    
+
 ]
