@@ -25,7 +25,7 @@ const Project = ()=>{
                 <div className="flex flex-row flex-wrap gap-2">
                     {
                         category.map(item =>(
-                            <button className="py-1 px-4 text-grey 
+                            <button className="py-1 px-3 text-grey 
                                 border-2 border-secondary rounded-full
                                 text-[12px] font-bold
                                 hover:bg-secondary hover:bg-opacity-5 hover:text-white
