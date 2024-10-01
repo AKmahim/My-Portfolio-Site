@@ -11,6 +11,7 @@ export default {
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
         grey: 'var(--grey)',
+        yellow: 'var(--yellow)',
       },
     },
   },
