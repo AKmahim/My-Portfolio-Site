@@ -37,6 +37,11 @@ const Project = ()=>{
                     
                 </div>
             </div>
+            {/* ================================ end category box =================== */}
+            {/* ==================================== project grid card ===================== */}
+            <div className="grid grid-cols-3">
+                    
+            </div>
         </div>
     );
 };
