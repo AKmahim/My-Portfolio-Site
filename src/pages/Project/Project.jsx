@@ -1,3 +1,4 @@
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import { projectCategory } from "../../data/category";
 
 
@@ -6,7 +7,7 @@ const Project = ()=>{
     // console.log(category);
     
     return (
-        <div>
+        <div className="mb-[100px] mt-[50px]">
             <h1 className="text-center font-medium text-2xl text-[#FCFBFE] mb-3">Here is my All Project</h1>
             {/*========================== search box ==========================*/}
             <div className="flex flex-col justify-center items-center ">
@@ -39,8 +40,11 @@ const Project = ()=>{
             </div>
             {/* ================================ end category box =================== */}
             {/* ==================================== project grid card ===================== */}
-            <div className="grid grid-cols-3">
-                    
+            <div className="mx-5 my-10 gap-4
+                lg:mx-40 lg:my-10 lg:grid-cols-3 lg:gap-10 grid  ">
+                    <ProjectCard></ProjectCard>
+                    <ProjectCard></ProjectCard>
+                    <ProjectCard></ProjectCard>
             </div>
         </div>
     );
