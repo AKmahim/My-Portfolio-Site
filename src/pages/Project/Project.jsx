@@ -41,7 +41,10 @@ const Project = ()=>{
             {/* ================================ end category box =================== */}
             {/* ==================================== project grid card ===================== */}
             <div className="mx-5 my-10 gap-4
-                lg:mx-40 lg:my-10 lg:grid-cols-3 lg:gap-10 grid  ">
+                md:mx-10 md:my-10 md:gap-4 md:grid-cols-2
+                lg:mx-10 lg:my-10 lg:grid-cols-3 lg:gap-5
+                xl:mx-40 xl:my-20 
+                grid  ">
                     <ProjectCard></ProjectCard>
                     <ProjectCard></ProjectCard>
                     <ProjectCard></ProjectCard>

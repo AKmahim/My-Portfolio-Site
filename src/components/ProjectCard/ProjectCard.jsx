@@ -17,12 +17,23 @@ const ProjectCard = () =>{
             <div>
                 {/* info */}
                 <div className='p-2 md:p-5 text-[#FCFBFE] text-center bg-[#2a2b47] border-b-2 border-yellow'>
-                    <h1 className='text-2xl md:text-4xl mb-4 font-semibold'>Custom Site Theming</h1>
-                    <p className='text-lg md:text-2xl text-left font-medium'>
+                    <h1 className='text-2xl 
+                    md:text-3xl 
+                    lg:text-2xl
+                    xl:text-3xl
+
+                    mb-4 font-semibold'>Custom Site Theming</h1>
+                    <p className='text-lg 
+                    md:text-xl 
+                    lg:text-lg
+                    xl:text-xl
+                    text-center font-medium'>
                         Add custom site theming to your website with CSS variables and vanilla JavaScript.
                     </p>
                     {/* important link */}
-                    <div className='flex flex-wrap gap-2  my-4'>
+                    <div className='flex flex-wrap 
+                        md:gap-2
+                        my-4 justify-center'>
                         <ButtonSecondary
                             title="Demo"
                             link="https://github.com/AKmahim"
@@ -45,7 +56,7 @@ const ProjectCard = () =>{
                 </div>
 
                 {/* footer */}
-                <div className='p-4 flex flex-wrap bg-[#373b56] rounded-b-2xl gap-1'>
+                <div className='p-4  flex flex-wrap bg-[#373b56] rounded-b-2xl gap-1 '>
                     <a href="#" className='p-1 text-[#0DE8F4] font-medium text-sm hover:bg-[#0DE8F4] hover:text-black rounded-2xl px-4'># CSS</a>
                     <a href="#" className='p-1 text-[#0DE8F4] font-medium text-sm hover:bg-[#0DE8F4] hover:text-black rounded-2xl px-4'># CSS</a>
                     
