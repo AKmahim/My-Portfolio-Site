@@ -4,6 +4,7 @@ import ButtonSecondary from '../Button/Buttonn2';
 import { MdDashboard } from "react-icons/md";
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { FaCode } from "react-icons/fa";
+import { FaExclamationTriangle } from "react-icons/fa";
 import './ProjectCard.css'
 const ProjectCard = () =>{
     
@@ -58,7 +59,7 @@ const ProjectCard = () =>{
                         >
                         </ButtonSecondary>
                     </div>
-                    <p className='text-sm '> Source code is private for commercial issue</p>
+                    <p className='text-sm flex justify-center items-center gap-2 text-yellow'><span><FaExclamationTriangle /></span> Source code is private for commercial issue</p>
                 </div>
 
                 {/* footer */}
