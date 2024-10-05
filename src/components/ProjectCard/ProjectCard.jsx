@@ -1,17 +1,22 @@
 import { VscGithub } from 'react-icons/vsc';
-import project1 from '../../assets/project1.jpg';
+import project1 from '../../assets/ajwanshop.png';
 import ButtonSecondary from '../Button/Buttonn2';
 import { MdDashboard } from "react-icons/md";
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { FaCode } from "react-icons/fa";
-
+import './ProjectCard.css'
 const ProjectCard = () =>{
     
     return (
-        <div className="rounded-2xl">
+        <div className="rounded-2xl ">
             {/* project image section */}
-            <div >
-                <img className='rounded-t-2xl'  src={project1}  />
+            <div className="h-[350px] overflow-hidden relative group">
+                <img 
+                    className="rounded-t-2xl h-auto w-full object-cover 
+                    transform group-hover:translate-y-[calc(350px-100%)] 
+                    transition-transform duration-[5000ms] ease-in" 
+                    src={project1} 
+                />
             </div>
             {/* project details section */}
             <div>
@@ -53,6 +58,7 @@ const ProjectCard = () =>{
                         >
                         </ButtonSecondary>
                     </div>
+                    <p className='text-sm '> Source code is private for commercial issue</p>
                 </div>
 
                 {/* footer */}

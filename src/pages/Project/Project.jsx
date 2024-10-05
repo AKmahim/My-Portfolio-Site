@@ -43,7 +43,7 @@ const Project = ()=>{
             <div className="mx-5 my-10 gap-4
                 md:mx-10 md:my-10 md:gap-4 md:grid-cols-2
                 lg:mx-10 lg:my-10 lg:grid-cols-3 lg:gap-5
-                xl:mx-40 xl:my-20 
+                xl:mx-40 xl:my-20 xl:gap-5
                 grid  ">
                     <ProjectCard></ProjectCard>
                     <ProjectCard></ProjectCard>
