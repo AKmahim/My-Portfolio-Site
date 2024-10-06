@@ -48,6 +48,7 @@ const Project = ()=>{
                     <ProjectCard></ProjectCard>
                     <ProjectCard></ProjectCard>
                     <ProjectCard></ProjectCard>
+                    <ProjectCard></ProjectCard>
             </div>
         </div>
     );
