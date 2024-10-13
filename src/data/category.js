@@ -7,6 +7,7 @@ export const projectCategory = [
     'MySQL',
     'HTML',
     'CSS',
+    'SCSS',
     'Javascript',
     'Bootstrap CSS',
     'PHP',
@@ -14,6 +15,9 @@ export const projectCategory = [
     'React',
     'Tailwind',
     'React Router Dom',
+    'Alpinejs',
+    'Firebase',
+    'Firebase Auth',
     'DaisyUI',
     'MaterialUI',
     "Shadcdn",
@@ -27,5 +31,6 @@ export const projectCategory = [
     "AR",
     "VR",
     "360 degree Tour",
+
 
 ]

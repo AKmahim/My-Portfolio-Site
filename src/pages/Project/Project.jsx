@@ -1,17 +1,35 @@
+import { useState } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import { projectCategory } from "../../data/category";
+import { useQuery } from "@tanstack/react-query";
 
 
 const Project = ()=>{
     const category = projectCategory;
     // console.log(category);
-    
+    // const [data,setData] = useState();
+
+    const {data,isLoading,error } = useQuery({
+        queryKey: ['projects'],
+        queryFn: async () => {
+            const response = await fetch('https://mahim.xri.com.bd/api/projects');
+            if(!response.ok){
+                throw new Error('Network response was not ok');
+            }
+            // console.log(response.json());
+            
+            return response.json();
+        },
+    });
+
     return (
         <div className="mb-[100px] mt-[50px]">
             <h1 className="text-center font-medium text-2xl text-[#FCFBFE] mb-3">Here is my All Project</h1>
             {/*========================== search box ==========================*/}
             <div className="flex flex-col justify-center items-center ">
-                <p className=" text-grey mb-2">6 matching projects</p>
+                <p className="text-grey mb-2">
+                  {Array.isArray(data?.data) ? `${data?.data.length} matching projects` : 'No projects found'}
+                </p>
                 <input 
                 type="text" 
                 className=" w-[250px] md:w-[300px] lg:w-[350px] xl:w-[450px]
@@ -40,16 +58,23 @@ const Project = ()=>{
             </div>
             {/* ================================ end category box =================== */}
             {/* ==================================== project grid card ===================== */}
-            <div className="mx-5 my-10 gap-4
-                md:mx-10 md:my-10 md:gap-4 md:grid-cols-2
-                lg:mx-10 lg:my-10 lg:grid-cols-3 lg:gap-5
-                xl:mx-40 xl:my-20 xl:gap-5
-                grid  ">
-                    <ProjectCard></ProjectCard>
-                    <ProjectCard></ProjectCard>
-                    <ProjectCard></ProjectCard>
-                    <ProjectCard></ProjectCard>
-            </div>
+            {
+                isLoading ? (
+                    <div className="text-center text-2xl mt-10 text-white">Loading .... </div>
+                ) : error ? (
+                    <div className="text-center text-2xl mt-10 text-white">Error: {error.message}</div>
+                ) : (
+                    <div className="mx-5 my-10 gap-4
+                        md:mx-10 md:my-10 md:gap-4 md:grid-cols-2
+                        lg:mx-10 lg:my-10 lg:grid-cols-3 lg:gap-5
+                        xl:mx-40 xl:my-20 xl:gap-5
+                        grid  ">
+                            {data?.data.map((project,index) => (
+                                <ProjectCard key={index} project={project}></ProjectCard>
+                            ))}
+                    </div>
+                )
+            }
         </div>
     );
 };

@@ -6,8 +6,13 @@ import { MdOutlineOndemandVideo } from "react-icons/md";
 import { FaCode } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import './ProjectCard.css'
-const ProjectCard = () =>{
-    
+const ProjectCard = ({project}) =>{
+    // console.log(project);
+    const project_category = JSON.parse(project?.project_category);
+    // console.log(project_category);
+    const {code_link, video_link, demo_link} = project ?? {};
+    // console.log("Extracted links:", code_link, video_link, demo_link);
+
     return (
         <div className="rounded-2xl ">
             {/* project image section */}
@@ -16,7 +21,7 @@ const ProjectCard = () =>{
                     className="rounded-t-2xl h-auto w-full object-cover 
                     transform group-hover:translate-y-[calc(350px-100%)] 
                     transition-transform duration-[5000ms] ease-in" 
-                    src={project1} 
+                    src={'https://mahim.xri.com.bd/'+project?.project_picture} 
                 />
             </div>
             {/* project details section */}
@@ -24,48 +29,79 @@ const ProjectCard = () =>{
                 {/* info */}
                 <div className='p-2 md:p-5 text-[#FCFBFE] text-center bg-[#2a2b47] border-b-2 border-yellow'>
                     <h1 className='text-2xl 
-                    md:text-3xl 
+                    md:text-2xl 
                     lg:text-2xl
-                    xl:text-3xl
+                    xl:text-2xl
 
-                    mb-4 font-semibold'>Custom Site Theming</h1>
+                    mb-4 font-semibold'>{project?.project_title}</h1>
                     <p className='text-lg 
                     md:text-xl 
                     lg:text-lg
-                    xl:text-xl
+                    xl:text-lg
                     text-center font-medium'>
-                        Add custom site theming to your website with CSS variables and vanilla JavaScript.
+                        {project?.short_description}
                     </p>
                     {/* important link */}
                     <div className='flex flex-wrap 
                         md:gap-2
                         my-4 justify-center'>
-                        <ButtonSecondary
-                            title="Demo"
-                            link="https://github.com/AKmahim"
-                            icon={ <MdDashboard />}
-                        >
-                        </ButtonSecondary>
-                        <ButtonSecondary
-                            title="Video"
-                            link="https://github.com/AKmahim"
-                            icon={ <MdOutlineOndemandVideo />}
-                        >
-                        </ButtonSecondary>
-                        <ButtonSecondary
-                            title="Code"
-                            link="https://github.com/AKmahim"
-                            icon={<FaCode />}
-                        >
-                        </ButtonSecondary>
+                        {
+                            demo_link ? (
+                                <>
+                                <ButtonSecondary
+                                    title="Demo"
+                                    link={demo_link}
+                                    icon={ <MdDashboard />}
+                                ></ButtonSecondary>
+                                </>
+                            ) : ''
+                        }
+                        {
+                            video_link ? (
+                                <>
+                                    <ButtonSecondary
+                                        title="Video"
+                                        link={video_link}
+                                        icon={ <MdOutlineOndemandVideo />}
+                                    >
+                                    </ButtonSecondary>
+                                </>
+                            ) :
+                            ''
+                        }
+                        {
+                            code_link ? (
+                                <>
+                                <ButtonSecondary
+                                    title="Code"
+                                    link={code_link}
+                                    icon={<FaCode />}
+                                >
+                                </ButtonSecondary>
+                                </>
+                            ) : 
+                            ''
+                        }
+                        
+                        
                     </div>
-                    <p className='text-sm flex justify-center items-center gap-2 text-yellow'><span><FaExclamationTriangle /></span> Source code is private for commercial issue</p>
+                   {
+                    !code_link ? (
+                        <p className='text-sm flex justify-center items-center gap-2 text-yellow'><span><FaExclamationTriangle /></span> Source code is private for commercial issue</p>
+                    ) :
+                     ''
+                   }
                 </div>
 
                 {/* footer */}
                 <div className='p-4  flex flex-wrap bg-[#373b56] rounded-b-2xl gap-1 '>
-                    <a href="#" className='p-1 text-[#0DE8F4] font-medium text-sm hover:bg-[#0DE8F4] hover:text-black rounded-2xl px-4'># CSS</a>
-                    <a href="#" className='p-1 text-[#0DE8F4] font-medium text-sm hover:bg-[#0DE8F4] hover:text-black rounded-2xl px-4'># CSS</a>
+                    {
+                        project_category.map((item,index) => (
+
+                            <a href="#" className='py-1 text-[#0DE8F4] font-medium text-sm hover:bg-[#0DE8F4] hover:text-black rounded-2xl px-1'># {item}</a>
+                            
+                        ))
+                    }
                     
                 </div>
             </div>
