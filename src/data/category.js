@@ -33,7 +33,6 @@ export const projectCategory = [
     "360 degree Tour",
     "Threejs",
     "LiveWire",
-    "SCSS",
     "React Native",
     "Capacitorjs",
     "Electronjs",

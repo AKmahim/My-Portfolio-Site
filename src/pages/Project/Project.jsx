@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import { projectCategory } from "../../data/category";
 import { useQuery } from "@tanstack/react-query";
@@ -8,15 +8,12 @@ const Project = ()=>{
     const category = projectCategory;
     // console.log(category);
     const [selectedCategory,setSelectedCategory] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
 
     const { data, isLoading, error } = useQuery({
-        queryKey: ['projects', selectedCategory],
+        queryKey: ['projects'],
         queryFn: async () => {
-            let url = 'https://mahim.xri.com.bd/api/projects';
-            if (selectedCategory) {
-                url = `https://mahim.xri.com.bd/api/get-by-category/${selectedCategory}`;
-            }
-            const response = await fetch(url);
+            const response = await fetch('https://mahim.xri.com.bd/api/projects');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -24,8 +21,38 @@ const Project = ()=>{
         },
     });
 
+    const filteredProjects = useMemo(() => {
+        if (!data || !data.data) return [];
+
+        return data.data.filter(project => {
+            const lowerCaseSearchTerm = searchTerm.toLowerCase();
+            const lowerCaseTitle = project.project_title.toLowerCase();
+
+            // Safely handle project_category, whether it's an array or not
+            const lowerCaseCategories = Array.isArray(project.project_category)
+                ? project.project_category.map(cat => cat.toLowerCase())
+                : [project.project_category.toLowerCase()];
+
+            // Check if category filter is applied
+            const categoryMatch = selectedCategory === null || 
+                                 lowerCaseCategories.some(cat => cat.includes(selectedCategory.toLowerCase()));
+
+            // Combine search and category filters
+            return (
+                (lowerCaseTitle.includes(lowerCaseSearchTerm) ||
+                 lowerCaseCategories.some(cat => cat.includes(lowerCaseSearchTerm))) &&
+                categoryMatch
+            );
+        });
+    }, [data?.data, searchTerm, selectedCategory]);
+
+
     const handleCategoryClick = (categoryName) => {
         setSelectedCategory(categoryName);
+    };
+
+    const handleSearchChange = (event) => {
+        setSearchTerm(event.target.value);
     };
 
 
@@ -35,11 +62,14 @@ const Project = ()=>{
             {/*========================== search box ==========================*/}
             <div className="flex flex-col justify-center items-center ">
                 <p className="text-grey mb-2">
-                  {Array.isArray(data?.data) ? `${data?.data.length} matching projects` : 'No projects found'}
+                  {Array.isArray(data?.data) ? `${filteredProjects.length} matching projects` : 'No projects found'}
                 </p>
                 {/* ========================== search field ================ */}
                 <input 
                 type="text" 
+                placeholder="Search projects..."
+                value={searchTerm}
+                onChange={handleSearchChange}
                 className=" w-[250px] md:w-[300px] lg:w-[350px] xl:w-[450px]
                  bg-transparent outline-none text-grey
                  font-medium text-2xl pb-2 border-b-4 border-secondary
@@ -75,15 +105,15 @@ const Project = ()=>{
                     <div className="text-center text-2xl mt-10 text-white">Error: {error.message}</div>
                 ) : (
                     <>
-                        {data?.status === false && data?.data.length === 0 ? (
-                            <div className="text-center text-2xl mt-10 text-white">{data.message}</div>
+                        {filteredProjects.length === 0 ? (
+                            <div className="text-center text-2xl mt-10 text-white">No matching projects found</div>
                         ) : (
                             <div className="mx-5 my-10 gap-4
                                 md:mx-10 md:my-10 md:gap-4 md:grid-cols-2
                                 lg:mx-10 lg:my-10 lg:grid-cols-3 lg:gap-5
                                 xl:mx-40 xl:my-20 xl:gap-5
                                 grid  ">
-                                    {data?.data.map((project,index) => (
+                                    {filteredProjects.map((project,index) => (
                                         <ProjectCard key={index} project={project}></ProjectCard>
                                     ))}
                             </div>
