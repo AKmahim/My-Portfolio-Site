@@ -7,20 +7,27 @@ import { useQuery } from "@tanstack/react-query";
 const Project = ()=>{
     const category = projectCategory;
     // console.log(category);
-    // const [data,setData] = useState();
+    const [selectedCategory,setSelectedCategory] = useState(null);
 
-    const {data,isLoading,error } = useQuery({
-        queryKey: ['projects'],
+    const { data, isLoading, error } = useQuery({
+        queryKey: ['projects', selectedCategory],
         queryFn: async () => {
-            const response = await fetch('https://mahim.xri.com.bd/api/projects');
-            if(!response.ok){
+            let url = 'https://mahim.xri.com.bd/api/projects';
+            if (selectedCategory) {
+                url = `https://mahim.xri.com.bd/api/get-by-category/${selectedCategory}`;
+            }
+            const response = await fetch(url);
+            if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            // console.log(response.json());
-            
             return response.json();
         },
     });
+
+    const handleCategoryClick = (categoryName) => {
+        setSelectedCategory(categoryName);
+    };
+
 
     return (
         <div className="pb-[100px] mt-[50px]">
@@ -30,6 +37,7 @@ const Project = ()=>{
                 <p className="text-grey mb-2">
                   {Array.isArray(data?.data) ? `${data?.data.length} matching projects` : 'No projects found'}
                 </p>
+                {/* ========================== search field ================ */}
                 <input 
                 type="text" 
                 className=" w-[250px] md:w-[300px] lg:w-[350px] xl:w-[450px]
@@ -44,11 +52,13 @@ const Project = ()=>{
                 <div className="flex flex-row flex-wrap gap-2">
                     {
                         category.map(item =>(
-                            <button className="py-1 px-3 text-grey 
-                                border-2 border-secondary rounded-full
-                                text-[12px] font-bold
-                                hover:bg-secondary hover:bg-opacity-5 hover:text-white
-                                ">
+                            <button onClick={()=>handleCategoryClick(item)}
+                                className={`py-1 px-3 text-grey 
+                                    border-2 border-secondary rounded-full
+                                    text-[12px] font-bold
+                                    hover:bg-secondary hover:bg-opacity-5 hover:text-white
+                                    ${selectedCategory === item ? 'bg-secondary bg-opacity-5 text-white' : ''}
+                                `}>
                                 {item}
                             </button>
                         ))
@@ -64,15 +74,21 @@ const Project = ()=>{
                 ) : error ? (
                     <div className="text-center text-2xl mt-10 text-white">Error: {error.message}</div>
                 ) : (
-                    <div className="mx-5 my-10 gap-4
-                        md:mx-10 md:my-10 md:gap-4 md:grid-cols-2
-                        lg:mx-10 lg:my-10 lg:grid-cols-3 lg:gap-5
-                        xl:mx-40 xl:my-20 xl:gap-5
-                        grid  ">
-                            {data?.data.map((project,index) => (
-                                <ProjectCard key={index} project={project}></ProjectCard>
-                            ))}
-                    </div>
+                    <>
+                        {data?.status === false && data?.data.length === 0 ? (
+                            <div className="text-center text-2xl mt-10 text-white">{data.message}</div>
+                        ) : (
+                            <div className="mx-5 my-10 gap-4
+                                md:mx-10 md:my-10 md:gap-4 md:grid-cols-2
+                                lg:mx-10 lg:my-10 lg:grid-cols-3 lg:gap-5
+                                xl:mx-40 xl:my-20 xl:gap-5
+                                grid  ">
+                                    {data?.data.map((project,index) => (
+                                        <ProjectCard key={index} project={project}></ProjectCard>
+                                    ))}
+                            </div>
+                        )}
+                    </>
                 )
             }
         </div>
