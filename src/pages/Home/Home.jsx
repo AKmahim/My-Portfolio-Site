@@ -13,6 +13,8 @@ import { FaInstagram } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import { SiBugcrowd } from "react-icons/si";
 import { IoLogoStackoverflow } from "react-icons/io5";
+import { AiFillProject } from "react-icons/ai";
+import { FcAbout } from "react-icons/fc";
 import './Home.css';
 
 const Home = () => {
@@ -48,7 +50,7 @@ const Home = () => {
 
 
     return (
-        <div className="anek-latin-font mb-10">
+        <div className="anek-latin-font pb-10">
             {/* about info */}
             <div className="lg:mx-40 md:mx-10 md:mt-20 md:mb-10 md:flex md:flex-row  md:justify-between md:gap-10 flex flex-col justify-center items-center">
                 <div className="mb-10">
@@ -88,8 +90,6 @@ const Home = () => {
                             link="https://fb.com/mee.mahim"
                             icon={<FaFacebookF />}
                         ></ButtonPrimary>
-
-
                         <ButtonPrimary
                             title="LinkedIn"
                             link="https://www.linkedin.com/in/me-mahim/"
@@ -119,6 +119,20 @@ const Home = () => {
                             link="https://stackoverflow.com/users/11359907"
                             icon={<IoLogoStackoverflow />}
                         ></ButtonPrimary>
+
+                        {/* ================ projects and about link for mobile ============= */}
+                        <div className="flex gap-3 flex-wrap md:hidden lg:hidden xl:hidden">
+                            <ButtonPrimary
+                                title="Project"
+                                link="/projects"
+                                icon={<AiFillProject />}
+                            ></ButtonPrimary>
+                            <ButtonPrimary
+                                title="About"
+                                link="/about"
+                                icon={<FcAbout />}
+                            ></ButtonPrimary>
+                        </div>
                     </div>
                 </div>
             </div>

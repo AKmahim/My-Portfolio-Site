@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { VscGithub } from 'react-icons/vsc';
 import project1 from '../../assets/ajwanshop.png';
 import ButtonSecondary from '../Button/Buttonn2';
@@ -6,22 +7,38 @@ import { MdOutlineOndemandVideo } from "react-icons/md";
 import { FaCode } from "react-icons/fa";
 import { FaExclamationTriangle } from "react-icons/fa";
 import './ProjectCard.css'
-const ProjectCard = ({project}) =>{
+const ProjectCard = ({ project }) =>{
     // console.log(project);
     const project_category = JSON.parse(project?.project_category);
     // console.log(project_category);
     const {code_link, video_link, demo_link} = project ?? {};
     // console.log("Extracted links:", code_link, video_link, demo_link);
 
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    useEffect(() => {
+        const img = new Image();
+        img.onload = () => setImageLoaded(true);
+        img.src = 'https://mahim.xri.com.bd/' + project?.project_picture;
+    }, [project?.project_picture]);
+
     return (
-        <div className="rounded-2xl ">
+        <div className="rounded-2xl">
             {/* project image section */}
             <div className="h-[350px] overflow-hidden relative group">
+                {!imageLoaded && (
+                    <div className="absolute inset-0 z-10 flex items-center justify-center">
+                        {/* <div className="skeleton h-[350px] w-full"></div> */}
+                        <span className="loading loading-spinner loading-lg"></span>
+                    </div>
+                )}
                 <img 
-                    className="rounded-t-2xl h-auto w-full object-cover 
+                    className={`rounded-t-2xl h-auto w-full object-cover 
+                    ${!imageLoaded ? 'opacity-0' : ''}
                     transform group-hover:translate-y-[calc(350px-100%)] 
-                    transition-transform duration-[5000ms] ease-in" 
-                    src={'https://mahim.xri.com.bd/'+project?.project_picture} 
+                    transition-transform duration-[5000ms] ease-in`}
+                    src={'https://mahim.xri.com.bd/' + project?.project_picture} 
+                    onLoad={() => setImageLoaded(true)}
                 />
             </div>
             {/* project details section */}
@@ -107,6 +124,6 @@ const ProjectCard = ({project}) =>{
             </div>
         </div>
     );
-}
+};
 
 export default ProjectCard;

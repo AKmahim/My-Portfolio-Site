@@ -36,3 +36,17 @@
     -o-transition: all 11s;
     transition: all 11s;
   }
+
+  /* .skeleton {
+    background-color: #e0e0e0;
+    animation: pulse 2s infinite ease-out;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+  } */

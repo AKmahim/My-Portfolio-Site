@@ -23,7 +23,7 @@ const Project = ()=>{
     });
 
     return (
-        <div className="mb-[100px] mt-[50px]">
+        <div className="pb-[100px] mt-[50px]">
             <h1 className="text-center font-medium text-2xl text-[#FCFBFE] mb-3">Here is my All Project</h1>
             {/*========================== search box ==========================*/}
             <div className="flex flex-col justify-center items-center ">
