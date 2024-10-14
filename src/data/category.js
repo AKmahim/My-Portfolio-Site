@@ -31,6 +31,15 @@ export const projectCategory = [
     "AR",
     "VR",
     "360 degree Tour",
+    "Threejs",
+    "LiveWire",
+    "SCSS",
+    "React Native",
+    "Capacitorjs",
+    "Electronjs",
+    "Desktop App",
+    "Axios",
+    "Web Game",
 
 
 ]
