@@ -36,7 +36,7 @@ const ProjectCard = ({ project }) =>{
                     className={`rounded-t-2xl h-auto w-full object-cover 
                     ${!imageLoaded ? 'opacity-0' : ''}
                     transform group-hover:translate-y-[calc(350px-100%)] 
-                    transition-transform duration-[5000ms] ease-in`}
+                    transition-transform duration-[10000ms] linear`}
                     src={'https://mahim.xri.com.bd/' + project?.project_picture} 
                     onLoad={() => setImageLoaded(true)}
                 />

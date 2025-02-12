@@ -22,19 +22,19 @@
       z-index: 0;
       margin:0;
       padding:0;
-      -webkit-transition: top 11s;
-      -moz-transition: top 11s;
-      -ms-transition: top 11s;
-      -o-transition: top 11s;
-      transition: bottom 11s;
+      -webkit-transition: top 11s linear;
+      -moz-transition: top 11s linear;
+      -ms-transition: top 11s linear;
+      -o-transition: top 11s linear;
+      transition: bottom 11s linear;
   }
   .screen:hover img {
     bottom: 0;
-    -webkit-transition: all 11s;
-    -moz-transition: all 11s;
-    -ms-transition: all 11s;
-    -o-transition: all 11s;
-    transition: all 11s;
+    -webkit-transition: all 11s linear;
+    -moz-transition: all 11s linear;
+    -ms-transition: all 11s linear;
+    -o-transition: all 11s linear;
+    transition: all 11s linear;
   }
 
   /* .skeleton {
